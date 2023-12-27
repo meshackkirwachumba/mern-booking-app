@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
@@ -29,6 +29,11 @@ const app = express();
 
 // serve the static files from ie css, js, index.js frontend
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+
+// catch all routes that are not defined
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+});
 
 // middlewares
 app.use(express.json());
