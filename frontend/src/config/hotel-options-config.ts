@@ -15,3 +15,14 @@ export const hotelTypes = [
   "Pet Friendly",
   "Self Catering",
 ];
+
+export const hotelFacilities = [
+  "Free WiFi",
+  "Free Parking",
+  "Swimming Pool",
+  "Gym",
+  "Restaurant",
+  "Pet Beds",
+  "Spa Tub",
+  "Bar",
+];
