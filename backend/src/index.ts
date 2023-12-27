@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
+import myHotelsRoutes from "./routes/my-hotels";
 
 // connect to cloudinary server
 cloudinary.config({
@@ -43,6 +44,7 @@ app.use(
 // routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/my-hotels", myHotelsRoutes);
 
 // start server
 app.listen(7000, () => {
