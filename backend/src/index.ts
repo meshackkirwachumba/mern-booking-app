@@ -30,11 +30,6 @@ const app = express();
 // serve the static files from ie css, js, index.js frontend
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
-// // catch all routes that are not defined
-// app.get("*", (req: Request, res: Response) => {
-//   res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
-// });
-
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -50,6 +45,11 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/my-hotels", myHotelsRoutes);
+
+// // catch all routes that are not defined
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+});
 
 // start server
 app.listen(7000, () => {
