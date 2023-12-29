@@ -83,4 +83,21 @@ myHotelsRoutes.get("/", verifyToken, async (req: Request, res: Response) => {
   }
 });
 
+// get a single hotel
+myHotelsRoutes.get("/:id", verifyToken, async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  try {
+    const hotel = await Hotel.find({
+      _id: id,
+      userId: req.userId,
+    });
+
+    res.json(hotel);
+  } catch (error) {
+    console.log("Error getting hotel: ", error);
+    res.status(500).json({ message: "Error fetching hotel" });
+  }
+});
+
 export default myHotelsRoutes;
